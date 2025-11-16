@@ -1,0 +1,22 @@
+{
+  "jobs": [
+    {
+      "id": "1873",
+      "title": "ML engineer",
+      "description": "create a model using the data to predict if it is terminated or not",
+      "completed": true
+    },
+    {
+      "id": "37e5",
+      "title": "AI developper",
+      "description": "find noise in the data",
+      "completed": true
+    },
+    {
+      "id": "c4c2",
+      "title": "mouad",
+      "description": "essagir",
+      "completed": true
+    }
+  ]
+}
