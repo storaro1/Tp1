@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini projet DBJS - Vue.js</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <style>
+    img {
+      float: left;
+      margin-right: 1rem;
+      border-radius: 5px;
+    }
+    .personne {
+      clear: left;
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+    input[type="checkbox"], select {
+      margin-right: 1rem;
+    }
+    .misEnForme {
+      background: #e0ffff;
+      font-family: georgia;
+      font-size: 1.2rem;
+      margin: 1rem;
+      border-radius: 8px;
+    }
+    .contact {
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <fieldset>
+      <legend>Filtre sur le nom</legend>
+      <input type="text" v-model="filtreNom" placeholder="Tapez un nom...">
+    </fieldset>
+
+    <fieldset>
+      <legend>Options</legend>
+      Homme <input type="checkbox" v-model="homme">
+      Femme <input type="checkbox" v-model="femme">
+      Téléphone / Email <input type="checkbox" v-model="afficherContact">
+      Photo
+      <select v-model="taille">
+        <option value="thumbnail">Petit</option>
+        <option value="medium">Moyen</option>
+        <option value="large">Grand</option>
+      </select>
+      Mise en forme <input type="checkbox" v-model="mef">
+    </fieldset>
+
+    <div 
+      class="personne"
+      v-for="(p, index) in personnesFiltrees"
+      :key="index"
+      :class="{ misEnForme: mef }"
+    >
+      <img :src="p.picture[taille]" :alt="p.name.first">
+      <strong>{{ p.name.title }} {{ p.name.first }} {{ p.name.last }}</strong><br>
+      {{ p.location.country }}<br>
+
+      <div class="contact" v-if="afficherContact">
+        📞 {{ p.phone }}<br>
+        📧 {{ p.email }}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          homme: true,
+          femme: true,
+          afficherContact: true, 
+          mef: false,
+          taille: 'medium',
+          filtreNom: '',
+          personnes: [] 
+        }
+      },
+      computed: {
+        personnesFiltrees() {
+          return this.personnes.filter(p => {
+            const matchGenre = 
+              (this.homme && p.gender === 'male') ||
+              (this.femme && p.gender === 'female');
+
+            const matchNom = p.name.last.toLowerCase()
+              .includes(this.filtreNom.toLowerCase());
+
+            return matchGenre && matchNom;
+          });
+        }
+      },
+      mounted() {
+        fetch('personnes.json')
+          .then(response => response.json())
+          .then(data => {
+            this.personnes = data;
+          })
+          .catch(error => {
+            console.error('Erreur lors du chargement du JSON :', error);
+          });
+      }
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>
