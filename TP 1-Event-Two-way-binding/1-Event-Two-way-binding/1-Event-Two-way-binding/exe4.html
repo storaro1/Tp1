@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Exercice - Couleur et affichage du paragraphe</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id="monapp">
+  <ul>
+    <li>
+      Couleur de la police :<br>
+      <label>
+        <input type="radio" value="red" v-model="couleur">
+        Rouge
+      </label>
+      <label>
+        <input type="radio" value="blue" v-model="couleur">
+        Bleu
+      </label>
+    </li>
+    <li>
+      <label>
+        Afficher/cacher le paragraphe ?
+        <input type="checkbox" v-model="afficher">
+      </label>
+    </li>
+  </ul>
+
+  <p v-show="afficher" :style="{ color: couleur }">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Ullam pariatur mollitia et, inventore delectus. 
+    Doloribus laudantium maiores at necessitatibus ipsum distinctio?
+  </p>
+</div>
+
+<script>
+  const appli = {
+    data() {
+      return {
+        couleur: 'black', 
+        afficher: false   
+      }
+    }
+  }
+
+  Vue.createApp(appli).mount("#monapp")
+</script>
+
+</body>
+</html>

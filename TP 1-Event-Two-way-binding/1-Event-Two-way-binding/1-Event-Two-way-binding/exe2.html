@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Exercice 2 - Compteur Vue.js</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id="monapp">
+  <button @click="incrementer">++</button>
+  {{ compteur }}
+  <button @click="decrementer">--</button>
+</div>
+
+<script>
+  const appli = {
+    data() {
+      return {
+        compteur: 0  
+      }
+    },
+    methods: {
+      incrementer() {
+        this.compteur++  
+      },
+      decrementer() {
+        this.compteur--  
+      }
+    }
+  }
+
+  Vue.createApp(appli).mount("#monapp")
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>v-model et v-bind</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .bloc {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Exemple avec v-model -->
+  <div class="bloc">
+    <h2>Exemple avec v-model</h2>
+    <input type="text" v-model="messageModel">
+    <p>Texte saisi : {{ messageModel }}</p>
+  </div>
+
+  <!-- Exemple avec v-bind -->
+  <div class="bloc">
+    <h2>Exemple avec v-bind</h2>
+    <input type="text" :value="messageBind" @input="updateMessage($event)">
+    <p>Texte affiché : {{ messageBind }}</p>
+  </div>
+</div>
+
+<script>
+  const app = {
+    data() {
+      return {
+        messageModel: '',        
+        messageBind: 'Texte initial'  
+      }
+    },
+    methods: {
+      updateMessage(event) {
+        this.messageBind = event.target.value 
+      }
+    }
+  }
+
+  Vue.createApp(app).mount('#app')
+</script>
+
+</body>
+</html>
