@@ -1,0 +1,42 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Introduction à Vue.js 3",
+      "body": "Vue.js 3 est un framework JavaScript progressif pour construire des interfaces utilisateur. Il offre une API de composition puissante, de meilleures performances et une meilleure prise en charge de TypeScript. Dans cet article, nous allons explorer les principales fonctionnalités de Vue 3 et comment elles peuvent améliorer votre développement web.",
+      "tags": [
+        "vue",
+        "javascript",
+        "frontend"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Les bases de TypeScript",
+      "body": "TypeScript est un sur-ensemble de JavaScript qui ajoute des types statiques. Il aide à détecter les erreurs plus tôt dans le développement et améliore la maintenabilité du code. TypeScript compile en JavaScript pur et peut être utilisé dans n'importe quel projet JavaScript existant.",
+      "tags": [
+        "typescript",
+        "javascript",
+        "programmation"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Comprendre la composition API",
+      "body": "La Composition API est une nouvelle façon d'organiser la logique des composants dans Vue 3. Elle offre plus de flexibilité et permet de mieux réutiliser la logique entre les composants. Avec la Composition API, vous pouvez organiser votre code par fonctionnalité plutôt que par option.",
+      "tags": [
+        "vue",
+        "composition-api",
+        "frontend"
+      ]
+    },
+    {
+      "id": "cc16",
+      "title": "shhsdd",
+      "body": "sadafcda",
+      "tags": [
+        "java"
+      ]
+    }
+  ]
+}
